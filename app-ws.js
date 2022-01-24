@@ -1,3 +1,4 @@
+require('dotenv').config();
 const WebSocket = require('ws');
 const { env } = require('process');
 const app_redis = require('./app-redis');
