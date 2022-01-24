@@ -1,7 +1,7 @@
 const redis = require('redis');
 const { env } = require('process');
 
-const auth = `redis://${env.REDIS_PASSWORD}@${env.REDIS_HOST}:${env.REDIS_PORT}`;
+const auth = `redis://${env.REDIS_HOST}:${env.REDIS_PORT}`;
 
 class Redis{
     constructor(){
