@@ -2,7 +2,7 @@ FROM node:16.0.0
 
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
-COPY deploy/ .
+COPY ./deploy/ .
 
 WORKDIR /home/node/app
 
