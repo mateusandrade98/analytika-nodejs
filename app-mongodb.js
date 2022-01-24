@@ -2,7 +2,7 @@ const mongodb = require('mongodb');
 const ObjectId = require('mongodb').ObjectId;
 const { env } = require('process');
 
-const auth = `mongodb://${env.MONGODB_HOST}:${env.MONGODB_PORT}`;
+const auth = `mongodb://${env.MONGODB_USER}:${env.MONGODB_PASSWORD}@${env.MONGODB_HOST}:${env.MONGODB_PORT}`;
 const client = new mongodb.MongoClient(auth);
 
 class MDB{
