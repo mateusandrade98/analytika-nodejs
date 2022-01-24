@@ -10,6 +10,8 @@ RUN npm install
 
 COPY . .
 
+COPY ./deploy/.env .
+
 COPY --chown=node:node . .
 
 USER node
