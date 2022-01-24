@@ -10,7 +10,7 @@ RUN npm install
 
 COPY . .
 
-COPY ./deploy/.env .
+COPY deploy/ .
 
 COPY --chown=node:node . .
 
