@@ -2,6 +2,8 @@ FROM node:16.0.0
 
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
+COPY deploy/ .
+
 WORKDIR /home/node/app
 
 COPY package*.json ./
@@ -9,8 +11,6 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
-
-COPY deploy/ .
 
 COPY --chown=node:node . .
 
