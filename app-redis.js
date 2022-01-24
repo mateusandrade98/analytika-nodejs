@@ -1,8 +1,7 @@
 const redis = require('redis');
 const { env } = require('process');
-const { url } = require('inspector');
 
-const url = `redis://${env.REDIS_HOST}:${env.REDIS_PORT}`;
+const auth = `redis://${env.REDIS_HOST}:${env.REDIS_PORT}`;
 
 class Redis{
     constructor(){
@@ -11,7 +10,7 @@ class Redis{
     
     conn(){
         const conn = redis.createClient({
-            url: url
+            url: auth
         });
         conn.auth(env.REDIS_PASSWORD);
         conn.on('error', (err) => console.log('Redis Client Error', err));
