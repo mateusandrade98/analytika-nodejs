@@ -1,4 +1,5 @@
 require('dotenv').config();
+const { TextEncoder, TextDecoder } = require("util");
 const WebSocket = require('ws');
 const { env } = require('process');
 const app_redis = require('./app-redis');
