@@ -4,7 +4,7 @@
   "description": "analytika version nodejs",
   "main": "index.js",
   "scripts": {
-    "start": "node -r dotenv/config index"
+    "start": "node index"
   },
   "author": "",
   "license": "ISC",
