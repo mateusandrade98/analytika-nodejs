@@ -9,7 +9,7 @@ async function setRedis(key, data){
 }
 
 async function chkAccessToken(key){
-    return await app_redis.get("accessToken:" + key);
+    return await app_redis.get("tokenAccess:" + key);
 }
 
 async function sendMetricsToServer(key){
