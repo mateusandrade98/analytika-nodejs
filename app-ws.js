@@ -5,11 +5,11 @@ const app_redis = require('./app-redis');
 const app_mongodb = require('./app-mongodb');
 
 function setRedis(key, data){
-    app_redis.set(key, data);
+    app_redis.set("connected:" + key, data);
 }
 
 async function sendMetricsToServer(key){
-    const data = await app_redis.get(key);
+    const data = await app_redis.get("connected:" + key);
     if(data){
         ws_data = JSON.parse(data);
         const fp_score = ((ws_data.s > 0 ? 1 : 0) +
