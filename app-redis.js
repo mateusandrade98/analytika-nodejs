@@ -8,7 +8,7 @@ class Redis{
     
     conn(){
         const conn = redis.createClient({
-            'url': `redis://${env.REDIS_PASSWORD}@${env.REDIS_HOST}:${env.REDIS_PORT}`
+            'url': `redis://:${env.REDIS_PASSWORD}@${env.REDIS_HOST}:${env.REDIS_PORT}`
         });
         conn.on('error', (err) => console.log('Redis Client Error', err));
         conn.connect();
