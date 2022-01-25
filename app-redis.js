@@ -1,9 +1,13 @@
 const redis = require('redis');
 const { env, exit } = require('process');
+var ping = require('ping');
 
 console.log(env.REDIS_HOST);
 console.log(env.REDIS_PORT);
 
+console.log(ping.sys.probe(env.REDIS_HOST));
+
+exit();
 
 class Redis{
     constructor(){
