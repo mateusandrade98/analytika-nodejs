@@ -5,7 +5,10 @@ var ping = require('ping');
 console.log(env.REDIS_HOST);
 console.log(env.REDIS_PORT);
 
-console.log(ping.sys.probe(env.REDIS_HOST));
+console.log(ping.sys.probe("127.0.0.1"));
+console.log(ping.sys.probe("srv-captain--redis"));
+console.log(ping.sys.probe("srv-captain--mongodb"));
+console.log(ping.sys.probe("srv-captain--analytika"));
 
 exit();
 
