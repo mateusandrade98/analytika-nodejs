@@ -49,6 +49,8 @@ function onClose(ws, req){
 }
 
 function onMessage(ws, data, req) {
+    console.log(env.REDIS_HOST);
+    console.log(env.REDIS_PORT);
     try{
         const wstoken = req.headers["sec-websocket-key"];
         obj = JSON.parse(data);
