@@ -29,7 +29,7 @@ async function sendMetricsToServer(key){
         metric.ip = ws_data.ip;
         metric.demografia = ws_data.demografia;
         metric.device = ws_data.device;
-        metric.fp = ws_data.fp;
+        metric.fp = ws_data.fp.toString();
         metric.fp_score = fp_score;
         metric.events = {};
         metric.token = key;

@@ -19,12 +19,12 @@ class Redis{
         return this.conn.get(key);
     }
 
-    set(key, data, expire=60){
+    async set(key, data, expire=60){
         this.conn.set(key, data);
         this.conn.expire(key, expire);
     }
 
-    del(key){
+    async del(key){
         this.conn.del(key);
     }
 }
