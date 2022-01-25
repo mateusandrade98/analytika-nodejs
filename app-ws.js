@@ -2,7 +2,6 @@ require('dotenv').config();
 const WebSocket = require('ws');
 const { env } = require('process');
 const app_redis = require('./app-redis');
-// const app_rdb = require('./app-rdb');
 const app_mongodb = require('./app-mongodb');
 
 function setRedis(key, data){
