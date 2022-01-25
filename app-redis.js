@@ -33,4 +33,7 @@ class Redis{
     }
 }
 
+console.log(env.REDIS_HOST);
+console.log(env.REDIS_PORT);
+
 module.exports = new Redis();
