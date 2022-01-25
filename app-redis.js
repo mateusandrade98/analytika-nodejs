@@ -4,7 +4,6 @@ const { env, exit } = require('process');
 console.log(env.REDIS_HOST);
 console.log(env.REDIS_PORT);
 
-exit();
 
 class Redis{
     constructor(){
