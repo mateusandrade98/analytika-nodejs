@@ -9,7 +9,7 @@ async function setRedis(key, data){
 }
 
 async function chkAccessToken(key){
-    return await app_redis.get("tokenAccess:" + key);
+    return await app_redis.get("accessToken:" + key);
 }
 
 async function sendMetricsToServer(key){
@@ -71,13 +71,11 @@ function onConnection(ws, req) {
     const accessToken = req.url;
     console.log("chkToken: " + accessToken);
     chkAccessToken(accessToken).then((access)=>{
-       if(!access){
-            console.log("[!] Client unauthorized");
-            ws.terminate();
-        }else{
-            console.log("[!] Client authorized");
+        console.log(access);
+        if(!access){
+
         }
-    }).catch((err)=>{console.error(err)});
+    }, (err)=>{console.error(err)});
     //end: check permission
     ws.on('message', data => onMessage(ws, data, req));
     ws.on('error', error => onError(ws, error));
