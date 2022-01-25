@@ -69,11 +69,13 @@ function onMessage(ws, data, req) {
 function onConnection(ws, req) {
     //check permission
     const accessToken = req.url;
-    console.log("chkToken: " + accessToken);
+    console.log("[?]chkToken: " + accessToken);
     chkAccessToken(accessToken).then((access)=>{
-        console.log(access);
         if(!access){
-
+            console.log(`[!] Client not authorized`);
+            ws.terminate()
+        }else{
+            console.log(`Client authorized`);
         }
     }, (err)=>{console.error(err)});
     //end: check permission
