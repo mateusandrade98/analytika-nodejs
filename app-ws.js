@@ -4,8 +4,12 @@ const { env } = require('process');
 const app_redis = require('./app-redis');
 const app_mongodb = require('./app-mongodb');
 
-function setRedis(key, data){
+async function setRedis(key, data){
     app_redis.set("connected:" + key, data);
+}
+
+async function chkAccessToken(key){
+    return await app_redis.get("tokenAccess:" + key);
 }
 
 async function sendMetricsToServer(key){
@@ -63,6 +67,13 @@ function onMessage(ws, data, req) {
 }
 
 function onConnection(ws, req) {
+    //check permission
+    const accessToken = req.url;
+    chkAccessToken(accessToken).then((access)=>{
+       console.log("[!] Client unauthorized");
+       if(!access)ws.terminate();
+    }).catch((err)=>{console.error(err)});
+    //end: check permission
     ws.on('message', data => onMessage(ws, data, req));
     ws.on('error', error => onError(ws, error));
     ws.on('close', ()=> onClose(ws, req));
