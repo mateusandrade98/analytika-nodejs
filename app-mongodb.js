@@ -15,8 +15,9 @@ class MDB{
             const database = client.db(env.MONGODB_DB);
             const table = database.collection(env.MONGODB_TABLE);
             const filter = {
+                "id_link": data["id_link"],
                 "fp": data["fp"],
-                "id_link": data["id_link"]
+                "ip": data["ip"]
             }
             const get = await table.findOne(filter);
             data["_id"] = data["id_link"] + "_" + data["fp"] + "_ip=" + data["ip"];
