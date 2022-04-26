@@ -33,6 +33,8 @@ async function sendMetricsToServer(key){
         metric.ip = ws_data.ip;
         metric.demografia = ws_data.demografia;
         metric.device = ws_data.device;
+        metric.InitiateCheckout = ws_data.InitiateCheckout;
+        metric.Lead = ws_data.Lead;
         metric.fp = ws_data.fp.toString();
         metric.fp_score = fp_score;
         metric.events = {};
