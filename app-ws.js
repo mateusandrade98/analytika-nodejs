@@ -1,4 +1,5 @@
 require('dotenv').config();
+var dateTime = require('node-datetime');
 const WebSocket = require('ws');
 const { env } = require('process');
 const app_redis = require('./app-redis');
@@ -16,13 +17,14 @@ async function sendMetricsToServer(key){
     const data = await app_redis.get("connected:" + key);
     if(data){
         ws_data = JSON.parse(data);
+        var dt = dateTime.create();
         const fp_score = ((ws_data.s > 0 ? 1 : 0) +
         ((ws_data.c > 0 ? 1 : 0)*2) +
         (ws_data.m > 0 ? 1 : 0) +
         ((ws_data.d > 0 ? 1 : 0)*2))/6*100;
         metric = {};
         metric.id_link = ws_data.id;
-        metric.date_time = ws_data.date_time;
+        metric.date_time = dt.format('Y-m-d H:M:S');
         metric.scrolls = ws_data.s;
         metric.clicks = ws_data.c;
         metric.moves = ws_data.m;
@@ -39,7 +41,6 @@ async function sendMetricsToServer(key){
         metric.fp_score = fp_score;
         metric.events = {};
         metric.token = key;
-        //app_rdb.setRDB(metric);
         app_mongodb.set(metric);
     }
 }
