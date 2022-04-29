@@ -39,6 +39,7 @@ async function sendMetricsToServer(key){
         metric.device = ws_data.device;
         metric.InitiateCheckout = ws_data.InitiateCheckout;
         metric.Lead = ws_data.Lead;
+        metric.Purchase = 1,
         metric.fp = ws_data.fp.toString();
         metric.fp_score = fp_score;
         metric.events = {};
