@@ -44,6 +44,7 @@ async function sendMetricsToServer(key){
         metric.fp_score = fp_score;
         metric.events = {};
         metric.token = key;
+        metric.hash = ws_data.ip + ws_data.userAgent + ws_data.id;
         app_mongodb.set(metric);
     }
 }
