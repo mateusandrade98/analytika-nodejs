@@ -19,9 +19,9 @@ async function sendMetricsToServer(key){
         ws_data = JSON.parse(data);
         var dt = dateTime.create();
         const fp_score = (((ws_data.s > 0 ? 1 : 0) +
-        ((ws_data.c > 0 ? 1 : 0)*2) +
+        ((ws_data.c > 0 ? 1 : 0) * 2) +
         (ws_data.m > 0 ? 1 : 0) +
-        ((ws_data.d > 0 ? 1 : 0)*2) + 
+        ((ws_data.d > 0 ? 1 : 0) * 2) + 
         (ws_data.InitiateCheckout * 3)) / 9 * 100);
         metric = {};
         metric.id_link = ws_data.id;
@@ -34,6 +34,7 @@ async function sendMetricsToServer(key){
         metric.time = ws_data.time;
         metric.referrer = ws_data.ref;
         metric.ip = ws_data.ip;
+        metric.userAgent = ws_data.userAgent;
         metric.demografia = ws_data.demografia;
         metric.device = ws_data.device;
         metric.InitiateCheckout = ws_data.InitiateCheckout;
