@@ -22,7 +22,7 @@ async function sendMetricsToServer(key){
         ((ws_data.c > 0 ? 1 : 0)*2) +
         (ws_data.m > 0 ? 1 : 0) +
         ((ws_data.d > 0 ? 1 : 0)*2) + 
-        (InitiateCheckout * 3) / 9 * 100);
+        (ws_data.InitiateCheckout * 3) / 9 * 100);
         metric = {};
         metric.id_link = ws_data.id;
         metric.date_time = dt.format('Y-m-d H:M:S');
