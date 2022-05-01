@@ -63,8 +63,8 @@ function onMessage(ws, data, req) {
         const wstoken = req.headers["sec-websocket-key"];
         obj = JSON.parse(data);
         if(obj.metrics){
-            const metrics = JSON.stringify(obj.metrics);
-            setRedis(wstoken, metrics);
+            if((obj.metrics.time / 1000 / 60) >= 45) ws.terminate();
+            setRedis(wstoken, JSON.stringify(obj.metrics));
         }
         ws.send(JSON.stringify({"Analytika": "ok"}));
     }catch(e){
