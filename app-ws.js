@@ -22,6 +22,7 @@ async function sendMetricsToServer(key){
         ((ws_data.c > 0 ? 1 : 0) * 2) +
         (ws_data.m > 0 ? 1 : 0) +
         (ws_data.InitiateCheckout * 3)) / 7 * 100);
+        if(!ws_data.InitiateCheckout) ws_data.events = {};
         metric = {};
         metric.id_link = ws_data.id;
         metric.date_time = dt.format('Y-m-d H:M:S');
@@ -41,7 +42,7 @@ async function sendMetricsToServer(key){
         metric.Purchase = 0,
         metric.fp = ws_data.fp.toString();
         metric.fp_score = fp_score;
-        metric.events = {};
+        metric.events = ws_data.events;
         metric.token = key;
         metric.identifier = ws_data.identifier;
         app_mongodb.set(metric);
