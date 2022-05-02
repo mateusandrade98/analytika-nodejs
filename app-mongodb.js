@@ -20,7 +20,7 @@ class MDB{
                 "ip": data["ip"]
             }
             const get = await table.findOne(filter);
-            data["_id"] = data["id_link"] + "_" + data["fp"] + "_ip=" + data["ip"];
+            data["_id"] = data["identifier"];
             if(!get){
                 //insert
                 await table.insertOne(data);
