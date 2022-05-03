@@ -1,5 +1,6 @@
 require('dotenv').config();
 var dateTime = require('node-datetime');
+var md5 = require('md5');
 const WebSocket = require('ws');
 const { env } = require('process');
 const app_redis = require('./app-redis');
@@ -45,6 +46,7 @@ async function sendMetricsToServer(key){
         metric.events = ws_data.events;
         metric.token = key;
         metric.identifier = ws_data.identifier;
+        metric.hashIdentifier = md5(ws_data.identifier);
         app_mongodb.set(metric);
     }
 }
