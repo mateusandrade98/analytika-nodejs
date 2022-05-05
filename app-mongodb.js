@@ -16,9 +16,9 @@ class MDB{
             const table = database.collection(env.MONGODB_TABLE);
             data["_id"] = data["identifier"];
             await table.insertOne(data);
-          } finally {
-            
-          }
+        }catch (e){
+            console.log(`Error: ${e.message}`);
+        }
     }
 }
 
