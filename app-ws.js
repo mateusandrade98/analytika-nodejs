@@ -49,7 +49,6 @@ async function sendMetricsToServer(key){
         metric.hashIdentifier = md5(ws_data.identifier);
         app_mongodb.set(metric);
     }
-    app_redis.quit();
 }
 
 function onError(ws, err) {
